@@ -1,0 +1,53 @@
+{
+  "name": "softer-test-task",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.1",
+    "@mui/material": "^5.14.2",
+    "@mui/styled-engine-sc": "^5.12.0",
+    "@types/node": "^20.4.5",
+    "@types/uuid": "^9.0.2",
+    "axios": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
+    "react-router-dom": "^6.14.2",
+    "styled-components": "^6.0.5",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "@vitejs/plugin-react": "^4.0.3",
+    "eslint": "^8.32.0",
+    "eslint-config-it-incubator": "^1.0.10",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-node": "^0.3.6",
+    "eslint-import-resolver-typescript": "^3.5.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "prettier": "^2.7.1",
+    "prettier-config-it-incubator": "^1.0.1",
+    "prettier-stylelint": "^0.4.2",
+    "stylelint": "^14.10.0",
+    "stylelint-config-clean-order": "^0.9.0",
+    "stylelint-prettier": "^2.0.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  }
+}
