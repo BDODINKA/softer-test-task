@@ -17,6 +17,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { apiAddFile } from '../../api/apiAddFile'
 import { CONSTANTS } from '../../constants/constants'
 import { AddTypeFile } from '../../types/AddTypeFile'
+import { fileSizeConverter } from '../../utils/fileSizeConverter'
 import { generateFileStatusArr } from '../../utils/generateFileStatusArr'
 
 // const useStyles = makeStyles({
@@ -52,13 +53,14 @@ export const FileInput: FC = () => {
       setValue(prev => [...prev, ...newArr])
       setIsDisabledBtn(false)
     } else {
-      console.log(`file length more ${CONSTANTS.maxValueFiles}`, file.length + value.length)
+      alert(`file length more ${CONSTANTS.maxValueFiles}`)
     }
   }
 
   const addFilesServer = async (index?: number) => {
     setIsDisabledBtn(true)
     for (let i = index || 0; i < value.length; i++) {
+      if (value[i].status === 'success') continue
       try {
         const response = await apiAddFile(value[i].file.name, value[i].file)
 
@@ -119,10 +121,7 @@ export const FileInput: FC = () => {
             <ListItemIcon>
               <InsertDriveFile />
             </ListItemIcon>
-            <ListItemText
-              primary={f.file.name}
-              secondary={`${(f.file.size / 1024 / 1024).toFixed(3)} мб`}
-            />
+            <ListItemText primary={f.file.name} secondary={fileSizeConverter(f.file.size)} />
             {f.status !== 'error' ? (
               <IconButton onClick={() => deleteFile(f.id)}>
                 <Delete />
