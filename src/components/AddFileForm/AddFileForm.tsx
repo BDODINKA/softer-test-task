@@ -20,24 +20,7 @@ import { AddTypeFile } from '../../types/AddTypeFile'
 import { fileSizeConverter } from '../../utils/fileSizeConverter'
 import { generateFileStatusArr } from '../../utils/generateFileStatusArr'
 
-// const useStyles = makeStyles({
-//   root: {
-//     backgroundColor: '#eee',
-//     textAlign: 'center',
-//     cursor: 'pointer',
-//     color: '#333',
-//     padding: '10px',
-//     marginTop: '20px',
-//   },
-//   icon: {
-//     marginTop: '16px',
-//     color: '#888888',
-//     fontSize: '42px',
-//   },
-// })
-
 export const AddFileForm: FC = () => {
-  // const styles = useStyles()
   const [value, setValue] = useState<AddTypeFile[]>([])
   const [isDisabledBtn, setIsDisabledBtn] = useState(true)
 
@@ -100,10 +83,19 @@ export const AddFileForm: FC = () => {
   }
 
   return (
-    <>
+    <div style={{ textAlign: 'center' }}>
       <Dropzone onDrop={addFile} maxFiles={CONSTANTS.maxValueFiles}>
         {({ getRootProps, getInputProps, fileRejections }) => (
-          <Paper variant="outlined" {...getRootProps()} sx={{ cursor: 'pointer' }}>
+          <Paper
+            variant="outlined"
+            {...getRootProps()}
+            sx={{
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
             <CloudUpload />
             <input {...getInputProps()} />
             <p>Drag drop files here, or click to select files</p>
@@ -123,16 +115,20 @@ export const AddFileForm: FC = () => {
             </ListItemIcon>
             <ListItemText primary={f.file.name} secondary={fileSizeConverter(f.file.size)} />
             {f.status !== 'error' ? (
-              <IconButton onClick={() => deleteFile(f.id)}>
-                <Delete />
-              </IconButton>
+              <>
+                {f.status === 'success' && <ListItemText primary={f.status} />}
+                <IconButton onClick={() => deleteFile(f.id)}>
+                  <Delete />
+                </IconButton>
+              </>
             ) : (
-              <IconButton onClick={() => refreshRequest(f.id)}>
-                <Refresh />
-              </IconButton>
+              <>
+                <ListItemText primary={f.errorMessage} />
+                <IconButton onClick={() => refreshRequest(f.id)}>
+                  <Refresh />
+                </IconButton>
+              </>
             )}
-            {f.status === 'success' && <ListItemText primary={f.status} />}
-            {f.status === 'error' && <ListItemText primary={f.errorMessage} />}
           </ListItem>
         ))}
       </List>
@@ -142,6 +138,6 @@ export const AddFileForm: FC = () => {
       <Button onClick={clearFileState} disabled={isDisabledBtn}>
         delete all
       </Button>
-    </>
+    </div>
   )
 }
