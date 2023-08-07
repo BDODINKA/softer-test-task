@@ -36,7 +36,7 @@ import { generateFileStatusArr } from '../../utils/generateFileStatusArr'
 //   },
 // })
 
-export const FileInput: FC = () => {
+export const AddFileForm: FC = () => {
   // const styles = useStyles()
   const [value, setValue] = useState<AddTypeFile[]>([])
   const [isDisabledBtn, setIsDisabledBtn] = useState(true)

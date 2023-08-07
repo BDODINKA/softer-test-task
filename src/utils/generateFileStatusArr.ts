@@ -1,9 +1,10 @@
 import { AddTypeFile } from '../types/AddTypeFile'
+import { StatusType } from '../types/StatusType'
 
 export const generateFileStatusArr = (
   arr: AddTypeFile[],
   id: string,
-  status: 'idle' | 'success' | 'error',
+  status: StatusType,
   err: string | null
 ): AddTypeFile[] => {
   return arr.map(el =>

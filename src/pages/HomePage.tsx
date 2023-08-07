@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { FileInput } from '../components/InputFile/InputFile'
+import { AddFileForm } from '../components/AddFileForm/AddFileForm'
 
 export const HomePage: FC = () => {
   return (
     <div>
-      <FileInput />
+      <AddFileForm />
     </div>
   )
 }

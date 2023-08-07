@@ -8,7 +8,6 @@ export const App: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      {/*<Route path={'/login'} element={<LoginPage />} />*/}
     </Routes>
   )
 }
