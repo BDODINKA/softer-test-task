@@ -7,5 +7,5 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  base: '/softer-test-task/',
+  base: '/softer-test-task',
 })
