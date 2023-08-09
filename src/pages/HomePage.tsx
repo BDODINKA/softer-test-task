@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom'
 import { AddFileForm } from '../components/AddFileForm/AddFileForm'
 
 export const HomePage: FC = () => {
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
 
   useEffect(() => {
     setIsLogin(true)
