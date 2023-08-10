@@ -11,7 +11,7 @@ export const HomePage: FC = () => {
     setIsLogin(true)
   }, [])
 
-  if (!isLogin) Navigate({ to: '/login' })
+  if (!isLogin) Navigate({ to: '/' })
 
   return (
     <div>
