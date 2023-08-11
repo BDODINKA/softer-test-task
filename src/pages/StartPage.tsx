@@ -13,7 +13,7 @@ export const StartPage = () => {
         {
           client_id: import.meta.env.VITE_CLIENT_ID,
           response_type: 'token',
-          redirect_uri: 'http://localhost:3000/softer-test-task/#/login',
+          redirect_uri: 'http://localhost:3000/softer-test-task/#/login/',
         },
         'http://localhost:3000/softer-test-task',
         {
@@ -26,7 +26,10 @@ export const StartPage = () => {
         }
       )
         .then((res: any) => {
-          res.handler()
+          return res.handler()
+        })
+        .then((data: any) => {
+          console.log(data)
         })
         .catch(function (error: any) {
           console.log('Что-то пошло не так: ', error)
@@ -38,4 +41,6 @@ export const StartPage = () => {
       document.body.removeChild(script)
     }
   }, [])
+
+  return <div></div>
 }
