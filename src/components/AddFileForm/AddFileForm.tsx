@@ -23,6 +23,7 @@ import { generateFileStatusArr } from '../../utils/generateFileStatusArr'
 export const AddFileForm: FC = () => {
   const [value, setValue] = useState<AddTypeFile[]>([])
   const [isDisabledBtn, setIsDisabledBtn] = useState(true)
+  const token = localStorage.getItem('AuthToken')
 
   const addFile = (file: File[]) => {
     if (value.length + file.length <= CONSTANTS.maxValueFiles) {
@@ -45,7 +46,7 @@ export const AddFileForm: FC = () => {
     for (let i = index || 0; i < value.length; i++) {
       if (value[i].status === 'success') continue
       try {
-        const response = await apiAddFile(value[i].file.name, value[i].file)
+        const response = await apiAddFile(value[i].file.name, value[i].file, token!)
 
         if (response.status === 201) {
           setValue(prev => generateFileStatusArr(prev, prev[i].id, 'success', null))
@@ -111,20 +112,20 @@ export const AddFileForm: FC = () => {
         {value.map(f => (
           <ListItem key={f.id}>
             <ListItemIcon>
-              <InsertDriveFile />
+              <InsertDriveFile color={'primary'} />
             </ListItemIcon>
             <ListItemText primary={f.file.name} secondary={fileSizeConverter(f.file.size)} />
             {f.status !== 'error' ? (
               <>
                 {f.status === 'success' && <ListItemText primary={f.status} />}
-                <IconButton onClick={() => deleteFile(f.id)}>
+                <IconButton onClick={() => deleteFile(f.id)} color={'primary'}>
                   <Delete />
                 </IconButton>
               </>
             ) : (
               <>
                 <ListItemText primary={f.errorMessage} />
-                <IconButton onClick={() => refreshRequest(f.id)}>
+                <IconButton onClick={() => refreshRequest(f.id)} color={'primary'}>
                   <Refresh />
                 </IconButton>
               </>

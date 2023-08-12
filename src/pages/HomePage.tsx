@@ -1,21 +1,19 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useContext } from 'react'
 
+import { Container } from '@mui/material'
 import { Navigate } from 'react-router-dom'
 
+import { Context } from '../app/App'
 import { AddFileForm } from '../components/AddFileForm/AddFileForm'
 
 export const HomePage: FC = () => {
-  const [isLogin, setIsLogin] = useState(false)
+  const { isLogin } = useContext(Context)
 
-  useEffect(() => {
-    setIsLogin(true)
-  }, [])
-
-  if (!isLogin) Navigate({ to: '/' })
+  if (!isLogin) return <Navigate to="/" />
 
   return (
-    <div>
+    <Container style={{ paddingTop: '50px' }}>
       <AddFileForm />
-    </div>
+    </Container>
   )
 }

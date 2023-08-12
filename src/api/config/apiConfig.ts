@@ -5,6 +5,5 @@ export const api = axios.create({
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: import.meta.env.VITE_AUTH_TOKEN,
   },
 })
