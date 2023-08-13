@@ -14,7 +14,7 @@ export const App: FC = () => {
   const [isLogin, setIsLogin] = useState(false)
 
   const setIsLoginHandler = () => {
-    setIsLogin(prevState => !prevState)
+    setIsLogin(true)
   }
 
   return (

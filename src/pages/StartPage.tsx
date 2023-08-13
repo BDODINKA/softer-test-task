@@ -16,7 +16,7 @@ export const StartPage = () => {
       setInitialize(true)
       setIsLoginHandler()
     }
-  }, [initialize])
+  }, [])
 
   useLayoutEffect(() => {
     if (!token) {
@@ -32,9 +32,13 @@ export const StartPage = () => {
             {
               client_id: import.meta.env.VITE_CLIENT_ID,
               response_type: 'token',
-              redirect_uri: import.meta.env.VITE_REDIRECT_URL,
+              redirect_uri: import.meta.env.PROD
+                ? import.meta.env.VITE_REDIRECT_URL
+                : import.meta.env.VITE_REDIRECT_URL_LOCAL,
             },
-            import.meta.env.VITE_BASE_URL_APP,
+            import.meta.env.PROD
+              ? import.meta.env.VITE_BASE_URL_APP
+              : import.meta.env.VITE_BASE_URL_APP_LOCAL,
             {
               view: 'button',
               parentId: 'container',
